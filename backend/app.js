@@ -9,12 +9,14 @@ const userRoutes = require("./routes/user");
 const path = require("path");
 const cors = require("cors");
 const app = express();
+require("dotenv").config();
 
 //Connecting to Database
 mongoose
-   .connect(
-      "mongodb+srv://assadullah:OpenClassrooms@cluster0.javh6jf.mongodb.net/?retryWrites=true&w=majority"
-   )
+   .connect(process.env.SECRET_DB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+   })
    .then(() => {
       console.log("Successfully Connected Database");
    })
